@@ -15,6 +15,9 @@
         @endforeach
     </div>
 </div>
-
-
+<nav class="my-1">
+    <div class="pagination pagination-lg justify-content-center">
+        {{$books->links()}}
+    </div>
+</nav>
 @endsection
