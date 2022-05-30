@@ -13,8 +13,11 @@
               </li>
               <li class="nav-item">
                 <a id="admin-view" class="nav-link" href="#">Admin view
-                    <h1 id="admin-tab">test</h1>
+                    {{-- <h1 id="admin-tab">test</h1> --}}
                 </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ route('books.create')}}">Create new post</a>
               </li>
             </ul>
           </div>
