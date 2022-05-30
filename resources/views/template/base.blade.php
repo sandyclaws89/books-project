@@ -10,6 +10,8 @@
 
 </head>
 <body>
-
+@include('partials.header')
+@yield('pageMain')
+@include('partials.footer')
 </body>
 </html>

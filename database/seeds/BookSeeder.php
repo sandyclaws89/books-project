@@ -20,6 +20,7 @@ class BookSeeder extends Seeder
             $bookData = [
                 'title'                 =>  $faker->sentence(rand(1, 4)),
                 'cover_image'           =>  'https://picsum.photos/id/' . rand(0, 1084) . '/640/480',
+                'short_description'     =>  $faker->sentence(rand(8, 20)),
                 'author'                =>  $faker->name(),
                 'price'                 =>  $faker->randomFloat(1, 4, 150),
                 'genre'                 =>  $faker->randomElement(['Horror', 'Dramatic', 'Romantic', 'Essay', 'Adult','Historical']),
