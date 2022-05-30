@@ -2,11 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Book;
 use Illuminate\Http\Request;
+use App\Book;
 
 class BookController extends Controller
 {
+    protected $validationRules = [
+        'title'                 =>  'nullable|numeric|min:5|max:250',
+        'cover_image'           =>  'image',
+        'short_description'     =>  'min:5|max:1000',
+        'author'                =>  'min:5|max:1000|nullable',
+        'price'                 =>  'numeric|min:3|max:300',
+        'synopsis'              =>  'string|nullable',
+        'review'                =>  'numeric|min:0|max:5|nullable',
+        'edition'               =>  'string|min:5|max:100|nullable',
+        'publishing_house'      =>  'string|min:5|max:250|nullable',
+        'pubblication_date'     =>  'date|nullable',
+        'checkin_date'          =>  'date',
+        'available'             =>  'boolean',
+        'quantity'              =>  'numeric',
+    ]; /*[
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +52,16 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validationRules);
+        $formData = $request->all();
+
+        $book = new Book();
+        $Book->fill($formData);
+        $Book->save();
+
+        // $newBook = Book::create($formData);
+        return redirect()->route('books.show', $book->id)->with('status', 'Complited with succes!');
+        dd($request->all());
     }
 
     /**

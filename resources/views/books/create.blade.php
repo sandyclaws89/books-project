@@ -1,12 +1,11 @@
 @extends('template.base')
 @section('pageTitle', 'New Post')
 @section('pageMain')
-<form method="post" action="">
-    @csrf
-    <div class="container">
-        <div class="row my-5">
-            <form method="post" action="{{ route('books.store') }}" class="row g-3 container d-flex justify-content-center mx-auto ">
-                @csrf
+    <form method="POST" action="{{route('books.store')}}">
+        @csrf
+        @if (session('status'))
+            <div class="alert alert-succes">{{ session('status') }}</div>
+        @endif
                 <div class="col-md-6">
                   <label for="title" class="form-label">Title</label>
                   <input type="text" class ="form-control" id="title" name="title">
@@ -76,12 +75,6 @@
                     </label>
                   </div>
                 </div>
-                <div class="col-12">
                   <button type="submit" class="btn btn-primary">Create</button>
-                </div>
-              </form>
-        </div>
-
-    </div>
-
+            </form>
 @endsection
