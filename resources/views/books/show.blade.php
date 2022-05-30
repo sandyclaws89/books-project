@@ -9,17 +9,19 @@
           <p class="card-text">{{$book->synopsis}}</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Author : {{$book->author}}</li>
+          <li class="list-group-item">Author            : {{$book->author}}</li>
           <li class="list-group-item">Pubblication Date : {{$book->pubblication_date}}</li>
-          <li class="list-group-item">Genre : {{$book->genre}}</li>
-          <li class="list-group-item">Review : {{$book->review}}</li>
-          <li class="list-group-item">Available : {{$book->available}}</li>
-          <li class="list-group-item">Price : {{$book->price}}</li>
-          <li class="list-group-item">A third item</li>
+          <li class="list-group-item">Genre             : {{$book->genre}}</li>
+          <li class="list-group-item">Review            : {{$book->review}}</li>
+          <li class="list-group-item">Availability      : {{$book->available ? 'Available' : 'Not available' }}</li>
+          <li class="list-group-item">Edition           : {{$book->edition}}</li>
+          <li class="list-group-item">Publishing_house  : {{$book->publishing_house}}</li>
+          <li class="list-group-item">Price             : {{$book->price}} €</li>
         </ul>
         <div class="card-body d-flex justify-content-between">
-            <button type="button" class="btn btn-primary">Favorities</button>
-            <button type="button" class="btn btn-success">Add to Cart</button>
+            <a href="{{ route('books.index') }}"> <button type="button" class="btn btn-primary">Back to listing</button></a>
+            <button type="button" class="btn btn-primary">Add to favorities</button>
+            <button type="button" class="btn btn-primary">Add to cart</button>
         </div>
       </div>
     </section>
