@@ -17,7 +17,10 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ route('books.create')}}">Create new post</a>
+                <a class="nav-link active" aria-current="page" href="{{ route('books.index')}}">Listing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{{ route('books.create')}}">Create new post</a>
               </li>
             </ul>
           </div>

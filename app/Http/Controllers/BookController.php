@@ -20,7 +20,7 @@ class BookController extends Controller
         'pubblication_date'     =>  'date|nullable',
         'checkin_date'          =>  'date',
         'available'             =>  'boolean',
-        'quantity'              =>  'numeric',
+        'quantity'              =>  'numeric'
     ]; /*[
     /**
      * Display a listing of the resource.
@@ -53,21 +53,22 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $request->validate($this->validationRules);
+
         $formData = $request->all();
+        dd($request);
 
-        $book = new Book();
-        $Book->fill($formData);
-        $Book->save();
+        // $book = new Book();
+        // $book->fill($formData);
+        // $book->save();
 
-        // $newBook = Book::create($formData);
-        return redirect()->route('books.show', $book->id)->with('status', 'Complited with succes!');
-        dd($request->all());
+        $newBook = Book::create($formData);
+        return redirect()->route('books.index', $newBook->id)->with('status', 'Complited with succes!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Book  $book
+     * @param int \App\Book  $book
      * @return \Illuminate\Http\Response
      */
     public function show(Book $book)
@@ -86,7 +87,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('books.edit', compact('book'));
     }
 
     /**
@@ -98,7 +99,11 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $request->validate($this->validationRules);
+
+        $formData = $request->all();
+        $book->update($formData);
+        return redirect()->route('books.show', $book->id);
     }
 
     /**
